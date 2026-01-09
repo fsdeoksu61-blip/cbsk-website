@@ -101,15 +101,16 @@
                 </div>
                 <style>
                     .map-contact-grid {
-                        display: grid;
-                        grid-template-columns: 1fr 1fr;
-                        gap: 30px;
+                        display: block;
+                        max-width: 800px;
+                    }
+                    .map-contact-grid > div {
+                        margin-bottom: 15px;
+                    }
+                    .map-contact-grid > div:last-child {
+                        margin-bottom: 0;
                     }
                     @media (max-width: 768px) {
-                        .map-contact-grid {
-                            grid-template-columns: 1fr;
-                            gap: 20px;
-                        }
                         .map-contact-info .info-card-content {
                             padding: 20px !important;
                         }
