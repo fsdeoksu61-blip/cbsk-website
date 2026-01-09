@@ -100,17 +100,20 @@
                     </div>
                 </div>
                 <style>
+                    .map-contact-info .info-card-content {
+                        max-width: 900px;
+                    }
                     .map-contact-grid {
-                        display: block;
-                        max-width: 800px;
-                    }
-                    .map-contact-grid > div {
-                        margin-bottom: 15px;
-                    }
-                    .map-contact-grid > div:last-child {
-                        margin-bottom: 0;
+                        display: grid;
+                        grid-template-columns: 1.5fr 1fr;
+                        gap: 40px;
+                        align-items: start;
                     }
                     @media (max-width: 768px) {
+                        .map-contact-grid {
+                            grid-template-columns: 1fr;
+                            gap: 20px;
+                        }
                         .map-contact-info .info-card-content {
                             padding: 20px !important;
                         }
