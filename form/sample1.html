@@ -1,0 +1,174 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="ks_c_5601-1987">
+  <link rel=StyleSheet HREF=morning.css type=text/css title=MORNING>
+<title>폼메일</title>
+</head>
+
+<body>
+
+<div align="center">
+  <table border="0" width="780" cellpadding="0">
+    <tr>
+      <td width="780" valign="top">
+      <p align="center"><b><font size="3">온라인 견적서</font></b>
+      </td>
+    </tr>
+    <tr>
+      <td width="780" valign="top">
+      </td>
+    </tr>
+    <tr>
+   <td width="780" valign="top">
+   <!-- 실행을 위한 php 경로 action 에 URL 주소를 넣어도 상관없음-->
+   <form enctype="multipart/form-data" method="post"  action="msform_sendmail.php">
+   <input type="hidden" name="msform_code" value="basic">
+   <div align="center">
+   <!-- key 값과 value 값을 마음대로 변경 하여 만드시면 됩니다-->
+   <table border="0" width="600" bgcolor="#B0B0B0" cellspacing="1" cellpadding="3">
+   <tr>
+   <td width="600" bgcolor="#E0E0E0" align="center" colspan="4">
+   <p align="left">&nbsp;<b>▤ <a href="admin.php"> 회사 정보</a></b></td>                             
+  </tr>                             
+  <tr>                             
+    <td width="100" bgcolor="#F7F7F7" align="center">회사명</td>                
+    <td width="200" bgcolor="#FFFFFF"><input type="text" name="회사명" size="14" class="text"></td>                            
+    <td width="100" bgcolor="#F7F7F7" align="center">대표 , CEO</td>                              
+    <td width="200" bgcolor="#FFFFFF"><input type="text" name="msform_name" size="14" class="text"></td>                             
+  </tr>                             
+  <tr>                             
+    <td width="100" bgcolor="#F7F7F7" align="center">담당자성명</td>                             
+    <td width="200" bgcolor="#FFFFFF"><input type="text" name="담당자성명" size="14" class="text"></td>                             
+    <td width="100" bgcolor="#F7F7F7" align="center">전화번호</td>                             
+    <td width="200" bgcolor="#FFFFFF"><input type="text" name="msform_tel" size="17" class="text"></td>                             
+  </tr>                             
+  <tr>                             
+    <td width="100" bgcolor="#F7F7F7" align="center">팩스번호</td>                             
+    <td width="200" bgcolor="#FFFFFF"><input type="text" name="팩스번호" size="17" class="text"></td>                             
+    <td width="100" bgcolor="#F7F7F7" align="center">핸드폰번호</td>                             
+    <td width="200" bgcolor="#FFFFFF"><input type="text" name="핸드폰번호" size="17" class="text"></td>                             
+  </tr>                             
+  <tr>                             
+    <td width="100" bgcolor="#F7F7F7" align="center">E-MAIL</td>    
+                               
+    <td width="200" bgcolor="#FFFFFF">    
+    <!-- 보내는 사람  name = 이 변경 된면 안됨 이메일 검사를 위해서-->    
+    <input type="text" name="msform_email" size="25" class="text"></td>                             
+    <td width="100" bgcolor="#F7F7F7" align="center">기존 URL</td>                              
+    <td width="200" bgcolor="#FFFFFF"><input type="text" name="기존URL" size="25" class="text"></td>                             
+  </tr>                             
+  <tr>                             
+    <td width="100" bgcolor="#F7F7F7" align="center">회사주소</td>                            
+    <td width="500" bgcolor="#FFFFFF" colspan="3"><input type="text" name="회사주소" size="50" class="text"></td>                            
+  </tr>                            
+  <tr>                            
+    <td width="600" bgcolor="#E0E0E0" align="left" colspan="4">&nbsp;<b>▤                              
+      홈페이지 정보</b></td>                             
+  </tr>                             
+  <tr>                             
+    <td width="100" bgcolor="#FFFFFF" align="center">홈페이지 유형</td>                             
+    <td width="200" bgcolor="#FFFFFF"><select size="1" name="홈페이지유형" class="select">                            
+        <option selected>개인홈페이지</option>                            
+        <option>회사홍보용</option>                            
+        <option>쇼핑몰</option>                            
+        <option>포탈싸이트</option>                            
+      </select></td>                            
+    <td width="100" bgcolor="#F7F7F7" align="center">기획단계</td>                            
+    <td width="200" bgcolor="#FFFFFF"><select size="1" name="기획단계" class="select">                            
+        <option selected>기획이전단계</option>                            
+        <option>초안작업완료</option>                            
+        <option>기획완료</option>                            
+      </select></td>                            
+  </tr>                            
+  <tr>                            
+    <td width="100" bgcolor="#FFFFFF" align="center">기초자료</td>                            
+    <td width="200" bgcolor="#FFFFFF"><select size="1" name="기초자료" class="select">                            
+        <option selected>자료편집중</option>                            
+        <option>자료편집완료</option>                            
+        <option>자료준비안됨</option>                            
+      </select></td>                            
+    <td width="100" bgcolor="#F7F7F7" align="center">참고URL</td>                            
+    <td width="200" bgcolor="#FFFFFF"><input type="text" name="참고URL" size="25" class="text"></td>                            
+  </tr>                            
+  <tr>                            
+    <td width="600" bgcolor="#E0E0E0" align="left" colspan="4">&nbsp;<b>▤                            
+      홈페이지 요구 사항</b></td>                            
+  </tr>                            
+  <tr>                            
+    <td width="100" bgcolor="#F7F7F7" align="center">품질</td>                            
+    <td width="200" bgcolor="#FFFFFF"><input type="radio" name="품질" value="상">상                            
+      	<input type="radio" name="품질" value="중">중 <input type="radio" name="품질" value="하" checked>하</td>                           
+    <td width="100" bgcolor="#F7F7F7" align="center">인트로</td>                           
+    <td width="200" bgcolor="#FFFFFF"><input type="radio" name="인트로" value="포함">포함                            
+      <input type="radio" name="인트로" value="미포함" checked>미포함</td>                           
+  </tr>                           
+  <tr>                           
+    <td width="100" bgcolor="#F7F7F7" align="center">메인페이지</td>                           
+    <td width="200" bgcolor="#FFFFFF"><input type="text" name="메인페이지" size="7" class="text">&nbsp;페이지</td>                           
+    <td width="100" bgcolor="#F7F7F7" align="center">서브페이지</td>                           
+    <td width="200" bgcolor="#FFFFFF"><input type="text" name="서브페이지" size="7" class="text">&nbsp;페이지</td>                           
+  </tr>                           
+  <tr>                           
+    <td width="100" bgcolor="#F7F7F7" align="center">동영상</td>                           
+    <td width="200" bgcolor="#FFFFFF"><input type="radio" name="동영상" value="포함">포함                            
+      <input type="radio" name="동영상" value="미포함" checked>미포함</td>                           
+    <td width="100" bgcolor="#F7F7F7" align="center">주문폼</td>                           
+    <td width="200" bgcolor="#FFFFFF"><input type="radio" name="주문폼" value="포함">포함                            
+      <input type="radio" name="주문폼" value="미포함" checked>미포함</td>                           
+  </tr>                           
+  <tr>                           
+    <td width="100" bgcolor="#F7F7F7" align="center">회원관리</td>                           
+    <td width="200" bgcolor="#FFFFFF"><input type="radio" name="회원관리" value="포함">포함                            
+      <input type="radio" name="회원관리" value="미포함" checked>미포함</td>                           
+    <td width="100" bgcolor="#F7F7F7" align="center">기타프로그램</td>                           
+    <td width="200" bgcolor="#FFFFFF"><input type="text" name="기타프로그램" size="20" class="text"></td>                           
+  </tr>                           
+                   
+  <tr>                           
+    <td width="100" bgcolor="#F7F7F7" align="center">DB프로그램</td>                          
+    <td width="200" bgcolor="#FFFFFF"><input type="text" name="DB프로그램" size="20" class="text"></td>                          
+    <td width="100" bgcolor="#F7F7F7" align="center">예상견적가격</td>                          
+    <td width="200" bgcolor="#FFFFFF"><input type="text" name="예상견적가격" size="10" class="text">        
+      만원</td>                          
+  </tr>                          
+  <tr>                          
+    <td width="600" bgcolor="#E0E0E0" align="center" colspan="4">                          
+      <p align="left"><b>&nbsp;▤ 하실말씀</b></td>                           
+  </tr>                           
+                           
+  <tr>                           
+    <td width="100" bgcolor="#F7F7F7" align="center">하실말씀</td>                           
+    <td width="500" bgcolor="#FFFFFF" colspan="3"><textarea rows="3" name="하실말씀" cols="50" class="textarea">기타 참고 사항 및 하시고 싶은 
+말씀을 적어 주시길 바랍니다</textarea></td>                           
+  </tr> 
+  <tr>                          
+    <td width="100" bgcolor="#F7F7F7" align="center">                          
+      <p align="left">첨부파일</td>  
+    <td width="500" bgcolor="#FFFFFF" colspan="3">
+	    <input type="file" name="msform_file1" size="30" class="text"> <br>  
+		<input type="file" name="msform_file2" size="30" class="text"> <br> 
+		<input type="file" name="msform_file3" size="30" class="text"> <br>  
+		<input type="file" name="msform_file4" size="30" class="text"> <br>  
+		<input type="file" name="msform_file5" size="30" class="text">
+    </td> 	  
+  </tr>  
+  <tr>                           
+    <td width="600" bgcolor="#E0E0E0" align="center" colspan="4"><center>  
+	<input type="submit" value=" 확인 " class="button">  
+                      
+<INPUT type="reset" value="다시쓰기" class="button"></center></td>                          
+  </tr>                          
+  </table>                          
+  </div>
+  </form>                          
+  </td>                          
+  </tr>                          
+  <tr>                          
+  <td width="780" valign="top">                          
+  </td>                          
+    </tr>                          
+  </table>                          
+</div>                          
+</body>                          
+                          
+</html>                          

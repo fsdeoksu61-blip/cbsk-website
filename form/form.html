@@ -1,0 +1,412 @@
+<!-- 
+
+     라이센스 부분은 절대 지울수 없으면 만약 임의로 삭제 되었을 경우는 법적 조치가 가해 질수 있습니다
+
+     프로그램명 : MORNING 시리즈
+
+     배포버젼   : MORNING FORM v0_2
+
+     배포일자   : 2001년 6월 20일
+
+     프로그램머 : 살다보면 (안주현)
+
+     디자인     : 살다보면 (안주현)
+
+     Homepage   : http://www.morningspecial.com
+
+     E-Mail     : morningspecial@empal.com
+
+
+
+     1. MORNING 시리즈의 모든 저작권은 살다보면 (안주현) 에게 있습니다.
+
+     2. MORNING 시리즈는 공개용으로 저작권 명시시 누구나 사용할수 있습니다.
+
+     3. MORNING 시리즈는 사용으로 인한 데이타 손실 및 기타 손해에 대해서 책임을 지지 않습니다.
+
+     4. MORNING 시리즈는 에 대해 유지/보수의 의무가 없습니다.
+
+     5. MORNING 시리즈의 상업적 목적으로 저작권자 허락 없이 사용 및 판매할수 있습니다.
+
+         (단 소스 재사용 및 소스를 수정하여 사용 또는 판매하는 행위는 할수 없습니다.)
+
+         확장자 HTML 으로 된 부분은 수정 삭제 할수 있습니다.
+
+         모든 메일 하단에 프로그램머 관련 사항은 지울수 없습니다.
+
+     6. 호스팅사의 대량 배포 또는 출판물에의한 소스 배포시에는 MORNING 시리즈 임을 소비자에게 인지 해야 합니다.
+
+         단 불특정 다수에 대한 대량 배포가 아닌경우는 소비자에게 MORNING 시리즈 임을 인지시킬 필요 없습니다.
+
+     7. MORNING 시리즈는 소스는 개인적으로 사용시 수정하여 사용할수 있습니다. 단 수정배포는 안됩니다.
+
+     8. HTML에서 소스보기로만 볼수 있는 라이센스 부분은 지울수 없습니다
+
+     9. MORNING 시리즈 개발 의욕을 증진 시키기 위해서 도움을 받고 있습니다. 
+
+         1) MORNING 시리즈 마음 드셔서 개발자를 도와 주시고 싶으신분.
+
+         2) MORNING 시리즈로 인하여 이익이 생긴분
+
+         3) 개발자 잠 못자고 만드는데 술한잔 사주실분
+
+         4) 다음 버젼 또는 새로운 프로그램이 계속 나오길 기대하시는분
+
+         물론 입금에 대한 모든 사항은 자유 입니다.
+
+        
+
+        입금은행 : 국민은행 
+
+        계좌번호 : 030-21-0798-293
+
+        예금주   : 안주현
+
+-->
+
+<!-- 자바 스크립트는 알아서 조정 해주시면 됩니다 -->
+
+<!-- 네임명은 제목입니다 -->
+
+<html>
+
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html" charset="ks_c_5601-1987">
+
+  <link rel=StyleSheet HREF=morning.css type=text/css title=MORNING>
+
+<title>폼메일</title>
+
+<style type="text/css">
+
+<!--
+
+.style13 {
+
+	font-size: 13px;
+
+	font-weight: normal;
+
+}
+
+.style10 {
+
+	font-size: 10pt;
+
+	font-weight: bold;
+
+}
+
+.style11 {font-size: 10pt}
+
+.style15 {
+	color: #0033FF;
+	font-weight: normal;
+}
+.style35 {font-size: 12pt}
+
+-->
+
+</style>
+
+<script language="JavaScript" type="text/JavaScript">
+
+<!--
+
+function MM_findObj(n, d) { //v4.01
+
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+
+}
+
+
+
+function YY_checkform() { //v4.66
+
+//copyright (c)1998,2002 Yaromat.com
+
+  var args = YY_checkform.arguments; var myDot=true; var myV=''; var myErr='';var addErr=false;var myReq;
+
+  for (var i=1; i<args.length;i=i+4){
+
+    if (args[i+1].charAt(0)=='#'){myReq=true; args[i+1]=args[i+1].substring(1);}else{myReq=false}
+
+    var myObj = MM_findObj(args[i].replace(/\[\d+\]/ig,""));
+
+    myV=myObj.value;
+
+    if (myObj.type=='text'||myObj.type=='password'||myObj.type=='hidden'){
+
+      if (myReq&&myObj.value.length==0){addErr=true}
+
+      if ((myV.length>0)&&(args[i+2]==1)){ //fromto
+
+        var myMa=args[i+1].split('_');if(isNaN(myV)||myV<myMa[0]/1||myV > myMa[1]/1){addErr=true}
+
+      } else if ((myV.length>0)&&(args[i+2]==2)){
+
+          var rx=new RegExp("^[\\w\.=-]+@[\\w\\.-]+\\.[a-z]{2,4}$");if(!rx.test(myV))addErr=true;
+
+      } else if ((myV.length>0)&&(args[i+2]==3)){ // date
+
+        var myMa=args[i+1].split("#"); var myAt=myV.match(myMa[0]);
+
+        if(myAt){
+
+          var myD=(myAt[myMa[1]])?myAt[myMa[1]]:1; var myM=myAt[myMa[2]]-1; var myY=myAt[myMa[3]];
+
+          var myDate=new Date(myY,myM,myD);
+
+          if(myDate.getFullYear()!=myY||myDate.getDate()!=myD||myDate.getMonth()!=myM){addErr=true};
+
+        }else{addErr=true}
+
+      } else if ((myV.length>0)&&(args[i+2]==4)){ // time
+
+        var myMa=args[i+1].split("#"); var myAt=myV.match(myMa[0]);if(!myAt){addErr=true}
+
+      } else if (myV.length>0&&args[i+2]==5){ // check this 2
+
+            var myObj1 = MM_findObj(args[i+1].replace(/\[\d+\]/ig,""));
+
+            if(myObj1.length)myObj1=myObj1[args[i+1].replace(/(.*\[)|(\].*)/ig,"")];
+
+            if(!myObj1.checked){addErr=true}
+
+      } else if (myV.length>0&&args[i+2]==6){ // the same
+
+            var myObj1 = MM_findObj(args[i+1]);
+
+            if(myV!=myObj1.value){addErr=true}
+
+      }
+
+    } else
+
+    if (!myObj.type&&myObj.length>0&&myObj[0].type=='radio'){
+
+          var myTest = args[i].match(/(.*)\[(\d+)\].*/i);
+
+          var myObj1=(myObj.length>1)?myObj[myTest[2]]:myObj;
+
+      if (args[i+2]==1&&myObj1&&myObj1.checked&&MM_findObj(args[i+1]).value.length/1==0){addErr=true}
+
+      if (args[i+2]==2){
+
+        var myDot=false;
+
+        for(var j=0;j<myObj.length;j++){myDot=myDot||myObj[j].checked}
+
+        if(!myDot){myErr+='* ' +args[i+3]+'\n'}
+
+      }
+
+    } else if (myObj.type=='checkbox'){
+
+      if(args[i+2]==1&&myObj.checked==false){addErr=true}
+
+      if(args[i+2]==2&&myObj.checked&&MM_findObj(args[i+1]).value.length/1==0){addErr=true}
+
+    } else if (myObj.type=='select-one'||myObj.type=='select-multiple'){
+
+      if(args[i+2]==1&&myObj.selectedIndex/1==0){addErr=true}
+
+    }else if (myObj.type=='textarea'){
+
+      if(myV.length<args[i+1]){addErr=true}
+
+    }
+
+    if (addErr){myErr+='* '+args[i+3]+'\n'; addErr=false}
+
+  }
+
+  if (myErr!=''){alert('The required information is incomplete or contains errors:\t\t\t\t\t\n\n'+myErr)}
+
+  document.MM_returnValue = (myErr=='');
+
+}
+
+//-->
+
+</script>
+
+</head>
+
+
+
+<body>
+<div align="center">
+  <table width="582" height="550" border="0" align="center" cellpadding="0" cellspacing="0">
+
+    <tr>
+
+      <td height="18" colspan="2" valign="top">&nbsp;</td>
+
+    </tr>
+
+    <tr>
+
+      <td height="2" colspan="2" valign="top">
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+   <td height="512" colspan="2" valign="top">
+
+   <!-- 실행을 위한 php 경로 action 에 URL 주소를 넣어도 상관없음-->
+
+   <form enctype="multipart/form-data" method="post"  action="msform_sendmail.php">
+   <input type="hidden" name="msform_code" value="basic">
+   <div align="center">
+
+   <!-- key 값과 value 값을 마음대로 변경 하여 만드시면 됩니다-->
+
+   <table width="548" border="1" cellpadding="3" cellspacing="0" bordercolor="#0AB5EA" bordercolorlight="#0AB5EA" bordercolordark="white" bgcolor="white">
+
+   <tr bgcolor="#DDECF7">
+
+   <td height="40" colspan="4" align="center">
+
+   <p align="left">&nbsp; <span class="style10"><img src="../image/dot_03.gif" width="10" height="10"> 신청자 정보 </span></td>                             
+
+  </tr>                             
+
+  <tr>                             
+
+    <td width="85" height="30" align="center" bgcolor="#F6FBFF" class="style13">성명(직분)</td>                             
+    <td bgcolor="#FFFFFF"><div align="left"><span class="style13">
+                    <input name="성명(직분)" type="text" id="상호4" size="20" maxlength="25">
+    </span></div></td>
+    <td width="102" bgcolor="#F6FBFF"><div align="center" class="style13">교회(단체)명</div></td>
+
+    <td width="170" bgcolor="#FFFFFF"><input name="교회(단체)명" type="text" id="대표자4" size="20" maxlength="20"></td>
+    </tr>
+
+  <tr>
+
+    <td height="30" align="center" bgcolor="#F6FBFF" class="style13">휴대폰번호</td>
+
+    <td bgcolor="#FFFFFF"><input name="휴대폰번호" type="text" id="주소" size="20" maxlength="20"></td>
+
+    <td bgcolor="#FFFFFF"><div align="center" class="style13">(지역)전화번호</div></td>
+    <td bgcolor="#FFFFFF"><input name="지역번호" type="text" id="전화번호2" size="5" maxlength="3">
+      <input name="전화번호" type="text" id="전화번호3" size="12"></td>
+    </tr>                             
+
+  <tr>                             
+
+    <td height="20" align="center" bgcolor="#F6FBFF" class="style13">문 의 내 용</td>                             
+
+    <td colspan="3" bgcolor="#FFFFFF">
+       <table width="429" height="26" border="0" cellpadding="6" cellspacing="0">
+        <tr align="left">
+          <th width="104" height="20" class="style13" scope="col"><input name="문의내용" type="radio" value="목회자관련" checked>
+      목회자관련</th>
+          <th width="106" class="style13" scope="col"><input type="radio" name="문의내용" value="평신도관련">
+      평신도관련</th>
+          <th width="96" class="style13" scope="col"><input type="radio" name="문의내용" value="맞춤강연">
+      맞춤강연</th>
+          <th width="75" class="style13" scope="col"><input type="radio" name="문의내용" value="기 타">
+      기 타 </th>
+        </tr>
+      </table></td>                             
+
+    </tr>                             
+
+  <tr>                             
+
+    <td height="30" align="center" bgcolor="#F6FBFF" class="style13">E-mail</td>    
+
+                               
+
+    <td width="157" bgcolor="#FFFFFF">    
+
+    <!-- 보내는 사람  name = 이 변경 된면 안됨 이메일 검사를 위해서-->   
+
+        <div align="left">
+
+          <input name="email" type="text" id="email" size="20" maxlength="20">
+
+        </div></td>                             
+
+    <td colspan="2" bgcolor="#F6FBFF" class="style13"><div align="center"></div>
+
+        <div align="left"> * e-mail은 필수기재 사항입니다</div></td>
+
+    </tr>                             
+
+  <tr bgcolor="#DDECF7">                             
+
+    <td height="5" colspan="4" align="center" class="style13"> <div align="right">. </div></td>                            
+
+    </tr>
+
+  <tr>                          
+
+    <td height="40" colspan="4" align="center" bgcolor="#DDECF7">                          
+
+      <p align="left"><b>&nbsp;<span class="style11"> <span class="style10"><img src="../image/dot_03.gif" width="10" height="10"></span> 남기실 말씀</span> </b><span class="style13">(문의사항이나 전하고 싶은 말씀을 남겨주세요)</span></td>                           
+
+  </tr>                           
+
+  <tr>                           
+
+    <td align="center" bgcolor="#F6FBFF" class="style13">MEMO</td>                           
+    <td bgcolor="#FFFFFF" colspan="3">    <textarea rows="15" name="하실말씀" cols="60"></textarea></td>                           
+
+  </tr>                           
+
+  <tr bgcolor="#DDECF7">                           
+
+    <td height="120" colspan="4" align="center">　
+  
+      <div align="center">
+  
+        <p><br>
+            <INPUT type="submit" onClick="YY_checkform('폼메일');return document.MM_returnValue" value="확      인">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                        
+  
+    <INPUT type="reset" value="다시쓰기">
+      <br>
+  
+　                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </p>
+  
+        </div>
+  
+    </td></tr>                          
+  </table>                          
+   </div>
+
+  </form>  </td>                          
+
+  </tr>                          
+
+  <tr>                          
+
+  <td width="21" height="18" valign="top">                          
+
+  </td>                          
+
+    <td width="561" valign="top">&nbsp;</td>
+  </tr>                          
+  </table>                          
+</div>                          
+
+</body>                          
+
+                          
+
+</html>

@@ -1,0 +1,34 @@
+<style type="text/css">
+<!--
+a:link    {color:#595959;text-decoration:none;}
+a:visited {color:#595959;text-decoration:none;}
+a:active  {color:#595959;text-decoration:none;}
+a:hover  {color:444444;text-decoration:underline}
+
+body {
+      font-family: "", "u"; font-size:9pt; color:#595959; line-height:140%;
+	  scrollbar-face-color: #DDDDDD;
+	  scrollbar-shadow-color: #AAAAAA;
+	  scrollbar-highlight-color: #FFFFFF;
+	  scrollbar-3dlight-color: #999999;
+	  scrollbar-darkshadow-color: #999999;
+	  scrollbar-track-color: #EEEEEE;
+	  scrollbar-arrow-color: #FFFFFF;
+}
+
+td, th, select, input, div, form, textarea, center, option, pre, blockquote {font-size:9pt; color:#595959; font-family:; line-height:140%;}
+
+.head {border:1px solid black;font-size:9pt;color:black;background-color:white;height:19px}
+.textarea {border:1px solid;border-color:#B4B4B4;width:100%;font-size:9pt;color:black;background-color:white}
+.text {background-color:#ffffff;border:1px solid;border-color:#B4B4B4;font-size:9pt;color:black}
+.submit1 {border:0px solid;font-size:9pt;color:white;background-color:black;height:19px}
+.submit2 {border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:9pt; font-family:;height:23px}
+.comment_submit {border:0px solid;font-size:9pt;color:white;background-color:black;height:100%;width:100%;}
+.price {color:#2266BB;font-family:,Gulim;font-size: 12px;font-weight: bold;}
+.page_list {color:#595959;font-family:,Gulim;font-size:8pt;text-decoration:none;}
+.board_show {color:#595959;font-family:,Gulim;font-size:9pt;text-decoration:none;word-break:break-all;}
+
+.search_subject {font-weight:bold; background-color:#FFFF66;}
+.search_list {background-color:#FFFF66;}
+-->
+</style>

@@ -1,0 +1,445 @@
+/* ==========================================
+   서브 페이지 공통 스타일
+   - 메인 페이지의 styles.css를 기반으로 서브페이지 전용 스타일 추가
+   ========================================== */
+
+/* Base Styles from main styles.css */
+@import url('../styles.css');
+
+/* ==========================================
+   Subpage Specific Styles
+   ========================================== */
+
+/* Breadcrumb Navigation */
+.breadcrumb {
+    background: var(--bg-light);
+    padding: 15px 0;
+    margin-bottom: 30px;
+}
+
+.breadcrumb-content {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.breadcrumb-content a {
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-content a:hover {
+    color: var(--primary-color);
+}
+
+.breadcrumb-content span {
+    margin: 0 10px;
+}
+
+.breadcrumb-current {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* ==========================================
+   Page Hero (smaller than main page)
+   ========================================== */
+.page-hero {
+    position: relative;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.page-hero-content {
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+.page-hero-content h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.page-hero-content p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    font-weight: 300;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ==========================================
+   Content Layout
+   ========================================== */
+.page-content {
+    padding: 40px 0 60px;
+}
+
+.content-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--bg-white);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.section-subtitle {
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    margin: 30px 0 20px;
+    font-weight: 600;
+}
+
+.content-box {
+    background: var(--bg-light);
+    padding: 30px;
+    border-radius: 8px;
+    margin: 25px 0;
+    border-left: 4px solid var(--primary-color);
+}
+
+.content-box h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.content-box p {
+    line-height: 1.8;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+/* ==========================================
+   List Styles
+   ========================================== */
+.content-list-detailed {
+    list-style: none;
+    padding: 0;
+}
+
+.content-list-detailed li {
+    padding: 15px 0 15px 30px;
+    position: relative;
+    line-height: 1.8;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.content-list-detailed li:last-child {
+    border-bottom: none;
+}
+
+.content-list-detailed li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Icon Lists */
+.icon-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.icon-list-item {
+    padding: 20px;
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.icon-list-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-color);
+}
+
+.icon-list-item strong {
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+}
+
+/* ==========================================
+   Info Cards
+   ========================================== */
+.info-card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 30px;
+    background: var(--bg-white);
+    padding: 30px;
+    border-radius: 8px;
+    margin: 25px 0;
+    box-shadow: var(--shadow);
+    align-items: start;
+}
+
+.info-card-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-card-content h3 {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.info-card-content p {
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.info-card-content ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.info-card-content ul li {
+    padding: 8px 0 8px 20px;
+    position: relative;
+}
+
+.info-card-content ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* ==========================================
+   Profile Card (for minister page)
+   ========================================== */
+.profile-card {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 30px;
+    background: var(--bg-light);
+    padding: 40px;
+    border-radius: 8px;
+    margin: 30px 0;
+}
+
+.profile-photo {
+    text-align: center;
+}
+
+.profile-photo img {
+    width: 100%;
+    border-radius: 8px;
+    border: 3px solid white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info h3 {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.profile-info h4 {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.profile-details {
+    margin-top: 20px;
+}
+
+.profile-details h5 {
+    color: var(--text-dark);
+    font-size: 1.1rem;
+    margin: 20px 0 10px;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 12px;
+}
+
+.profile-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.profile-details li {
+    padding: 8px 0 8px 25px;
+    position: relative;
+    line-height: 1.6;
+}
+
+.profile-details li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+/* ==========================================
+   Map Section
+   ========================================== */
+.map-container {
+    margin: 30px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.map-container img {
+    width: 100%;
+    display: block;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.contact-card {
+    background: var(--bg-light);
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.contact-card h4 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.contact-card p {
+    line-height: 1.8;
+    margin: 8px 0;
+}
+
+.contact-card strong {
+    color: var(--text-dark);
+    display: inline-block;
+    min-width: 60px;
+}
+
+/* ==========================================
+   Quote/Verse Box
+   ========================================== */
+.quote-box {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 30px;
+    border-radius: 8px;
+    margin: 30px 0;
+    font-style: italic;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.quote-box p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.quote-box cite {
+    display: block;
+    font-size: 0.95rem;
+    opacity: 0.9;
+    margin-top: 10px;
+}
+
+/* ==========================================
+   Responsive Design for Subpages
+   ========================================== */
+@media (max-width: 768px) {
+    .page-hero {
+        min-height: 200px;
+    }
+
+    .page-hero-content h1 {
+        font-size: 1.6rem;
+    }
+
+    .page-hero-content p {
+        font-size: 0.95rem;
+    }
+
+    .content-wrapper {
+        padding: 25px 20px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .info-card,
+    .profile-card {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 25px 20px;
+    }
+
+    .info-card-image,
+    .profile-photo {
+        display: flex;
+        justify-content: center;
+    }
+
+    .info-card-image img,
+    .profile-photo img {
+        max-width: 200px;
+    }
+
+    .icon-list {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .breadcrumb-content {
+        font-size: 0.85rem;
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .content-box {
+        padding: 20px;
+    }
+}

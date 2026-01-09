@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="한국교회 예절교육원 찾아오시는길 - 서울특별시 영등포구 당산1동 138-7번지">
+    <title>찾아오시는길 - 한국교회 예절교육원</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../subpage-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html" class="logo-text">
+                        <span class="logo-top">교회매너 강연 전문</span>
+                        <span class="logo-main">한국교회 예절교육원</span>
+                        <span class="logo-sub">KOREAN INSTITUTE OF CHURCHES AND ETIQUETTE EDUCATION</span>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="center.html">참빛선교센터</a></li>
+                        <li><a href="minister.html">강사소개</a></li>
+                        <li><a href="../program/clergyman.html">프로그램</a></li>
+                        <li><a href="../counsel/counsel.html">상담신청</a></li>
+                        <li><a href="../information/information.html">자료실</a></li>
+                        <li><a href="map.html" class="active">찾아오시는길</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-toggle" aria-label="메뉴 열기">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero with Bible Verse -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h1>찾아오시는길</h1>
+                <p>"강건한 믿음으로 작은 소망을 가지고 사랑을 실천하는 일은 하나님의 기쁨입니다."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <a href="../index.html">HOME</a>
+                <span>></span>
+                <a href="center.html">참빛선교센터</a>
+                <span>></span>
+                <span class="breadcrumb-current">찾아오시는길</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="page-content">
+        <div class="container">
+            <div class="content-wrapper">
+
+                <!-- Section Title -->
+                <h2 class="section-title">찾아오시는길</h2>
+
+                <!-- Map Image -->
+                <div class="map-container" style="background: #f8f9fa; padding: 40px; border-radius: 8px;">
+                    <svg viewBox="0 0 800 600" style="max-width: 100%; height: auto;">
+                        <!-- Background -->
+                        <rect width="800" height="600" fill="#ffffff"/>
+
+                        <!-- Grid lines (subtle) -->
+                        <line x1="0" y1="300" x2="800" y2="300" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="5,5"/>
+                        <line x1="400" y1="0" x2="400" y2="600" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="5,5"/>
+
+                        <!-- Roads -->
+                        <!-- Main horizontal road (당산로) -->
+                        <rect x="0" y="250" width="800" height="100" fill="#f0f0f0"/>
+                        <line x1="0" y1="250" x2="800" y2="250" stroke="#666" stroke-width="2"/>
+                        <line x1="0" y1="350" x2="800" y2="350" stroke="#666" stroke-width="2"/>
+                        <line x1="0" y1="300" x2="800" y2="300" stroke="#999" stroke-width="1" stroke-dasharray="10,5"/>
+
+                        <!-- Vertical road (양평로) -->
+                        <rect x="500" y="0" width="80" height="600" fill="#f0f0f0"/>
+                        <line x1="500" y1="0" x2="500" y2="600" stroke="#666" stroke-width="2"/>
+                        <line x1="580" y1="0" x2="580" y2="600" stroke="#666" stroke-width="2"/>
+                        <line x1="540" y1="0" x2="540" y2="600" stroke="#999" stroke-width="1" stroke-dasharray="10,5"/>
+
+                        <!-- Subway Station (당산역) -->
+                        <circle cx="540" cy="300" r="30" fill="#3498db"/>
+                        <text x="540" y="305" text-anchor="middle" fill="white" font-size="16" font-weight="bold">지하철</text>
+                        <text x="540" y="360" text-anchor="middle" fill="#333" font-size="18" font-weight="bold">당산역</text>
+                        <text x="540" y="380" text-anchor="middle" fill="#666" font-size="14">2·9호선</text>
+
+                        <!-- Target Location (한국CBMC선교회) -->
+                        <rect x="280" y="200" width="120" height="80" fill="#e74c3c" stroke="#c0392b" stroke-width="3"/>
+                        <text x="340" y="235" text-anchor="middle" fill="white" font-size="14" font-weight="bold">한국CBMC</text>
+                        <text x="340" y="255" text-anchor="middle" fill="white" font-size="14" font-weight="bold">선교회</text>
+
+                        <!-- Location marker -->
+                        <circle cx="340" cy="190" r="8" fill="#e74c3c"/>
+                        <circle cx="340" cy="190" r="12" fill="none" stroke="#e74c3c" stroke-width="2" opacity="0.5"/>
+
+                        <!-- Arrow from station to location -->
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                <polygon points="0 0, 10 3, 0 6" fill="#e74c3c" />
+                            </marker>
+                        </defs>
+                        <path d="M 500 280 Q 420 240 360 240" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+
+                        <!-- Distance label -->
+                        <rect x="390" y="215" width="90" height="30" fill="white" stroke="#e74c3c" stroke-width="2" rx="5"/>
+                        <text x="435" y="235" text-anchor="middle" fill="#e74c3c" font-size="14" font-weight="bold">도보 5분</text>
+
+                        <!-- Landmarks -->
+                        <!-- KT빌딩 -->
+                        <rect x="280" y="360" width="80" height="50" fill="#ddd" stroke="#999" stroke-width="1"/>
+                        <text x="320" y="390" text-anchor="middle" fill="#666" font-size="12">KT빌딩</text>
+
+                        <!-- 무의초등학교 -->
+                        <rect x="120" y="370" width="100" height="60" fill="#c8e6c9" stroke="#4caf50" stroke-width="1"/>
+                        <text x="170" y="405" text-anchor="middle" fill="#2e7d32" font-size="12" font-weight="bold">무의초등학교</text>
+
+                        <!-- 한신아파트 -->
+                        <rect x="620" y="120" width="80" height="100" fill="#bbdefb" stroke="#2196f3" stroke-width="1"/>
+                        <text x="660" y="165" text-anchor="middle" fill="#1565c0" font-size="12">한신</text>
+                        <text x="660" y="180" text-anchor="middle" fill="#1565c0" font-size="12">아파트</text>
+
+                        <!-- Road labels -->
+                        <text x="250" y="240" fill="#666" font-size="16" font-weight="bold">당산로</text>
+                        <text x="620" y="150" fill="#666" font-size="16" font-weight="bold" transform="rotate(-90 620 150)">양평로</text>
+
+                        <!-- Direction indicator (North) -->
+                        <g transform="translate(720, 50)">
+                            <circle cx="0" cy="0" r="25" fill="white" stroke="#666" stroke-width="2"/>
+                            <polygon points="0,-15 5,10 0,5 -5,10" fill="#e74c3c"/>
+                            <text x="0" y="-20" text-anchor="middle" fill="#666" font-size="12" font-weight="bold">N</text>
+                        </g>
+
+                        <!-- Address box -->
+                        <rect x="50" y="470" width="300" height="100" fill="white" stroke="#3498db" stroke-width="2" rx="5"/>
+                        <text x="200" y="495" text-anchor="middle" fill="#333" font-size="14" font-weight="bold">주소</text>
+                        <text x="200" y="520" text-anchor="middle" fill="#666" font-size="12">서울특별시 영등포구</text>
+                        <text x="200" y="540" text-anchor="middle" fill="#666" font-size="12">당산1동 138-7번지</text>
+                        <text x="200" y="560" text-anchor="middle" fill="#666" font-size="12">한국CBMC선교회내</text>
+                    </svg>
+                </div>
+
+                <!-- Contact Information with Image -->
+                <div style="height: 2px; background: linear-gradient(to right, var(--primary-color), transparent); margin: 50px 0 30px 0;"></div>
+                <h3 class="section-subtitle">한국교회 예절교육원</h3>
+                <div class="info-card" style="display: block;">
+                    <div class="info-card-content">
+                        <h3 style="width: 100%; text-align: left; margin-bottom: 30px; padding-left: 2em;">참빛선교센터</h3>
+                        <div style="display: flex; gap: 80px; justify-content: center;">
+                            <div style="flex: 0 0 auto;">
+                                <p style="padding-left: 2.5em; text-indent: -2.5em;"><strong>주 소:</strong> 서울특별시 영등포구<br>
+                                당산1동 138-7번지<br>
+                                한국CBMC선교회내</p>
+                            </div>
+                            <div style="flex: 0 0 auto;">
+                                <p style="margin-bottom: 5px;"><strong>전 화:</strong> (02) 2297-4320</p>
+                                <p style="margin-bottom: 5px;"><strong>팩 스:</strong> (02) 2297-4320</p>
+                            </div>
+                            <div style="flex: 0 0 auto;">
+                                <p style="margin-bottom: 5px;"><strong>휴대폰:</strong> 010-6336-4320</p>
+                                <p style="margin-bottom: 5px;"><strong>이메일:</strong> kangorchid@hanmail.net</p>
+                                <p style="margin-bottom: 5px;"><strong>담임목사:</strong> 강귀란</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bible Verse Quote Box -->
+                <div class="quote-box">
+                    <p>
+                        "하나님은 한분이시요. 또 하나님과 사람 사이에 중보도 한 분이시니, 곧 사랑이신 그리스도 예수라"
+                    </p>
+                    <cite>(딤 전2~5절)</cite>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-logo-text">
+                        <span class="footer-logo-top">교회매너 강연 전문</span>
+                        <span class="footer-logo-main">한국교회 예절교육원</span>
+                        <span class="footer-logo-sub">KOREAN INSTITUTE OF CHURCHES AND ETIQUETTE EDUCATION</span>
+                    </div>
+                </div>
+                <div class="footer-info">
+                    <p><strong>Copyright © 2007 cbsk.kr All rights Reserved</strong></p>
+                    <p>서울특별시 영등포구 당산1동 138-7번지 한국CBMC선교회내 한국교회상담센터</p>
+                    <p>참빛교회/참빛선교센터/참빛영성훈련원,
+                        <a href="http://cbsk.kr/bbs/admin.php">관리자</a>/<a href="http://cbsk.kr/form/admin_login.php">폼메일</a>
+                    </p>
+                    <p>TEL: (02)2297-4320, FAX: (02)2297-4320, HP: 010-6336-4320</p>
+                    <p>담임목사 강귀란, e-mail: kangorchid@hanmail.net</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

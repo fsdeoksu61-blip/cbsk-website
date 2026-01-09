@@ -1,0 +1,21 @@
+<style type="text/css">
+<!--
+a:link {font-family: "±¼¸²", "µ¸¿ò"; color:black; text-decoration:none; }
+a:visited {font-family: "±¼¸²", "µ¸¿ò"; color:rgb(69,67,62); text-decoration:none; }
+a:active {font-family: "±¼¸²", "µ¸¿ò"; color:rgb(90,0,13); }
+a:hover {font-family: "±¼¸²", "µ¸¿ò"; color:rgb(61,54,45); text-decoration:underline; }
+body {font-family: "±¼¸²", "µ¸¿ò"; font-size:9pt; color:black; line-height:150%;}
+td {font-family: "±¼¸²", "µ¸¿ò"; font-size:9pt; color:black; line-height:150%; }
+
+.basic		{ text-decoration:none; color:black; font-size:9pt;}
+.big			{ text-decoration:none; color:black; font-size:10pt }
+.little		{ text-decoration:none; color:black; font-size:8pt }
+.button		{ font-size:9pt; color:black; background-color:#D8D8D8; border-width:1; border-color:#B0B0B0; cursor: hand;}
+.pass     { font-size:9pt; color:#393939; background-color:#F3F3F3; border-width:1; border-color:#696969; border-style:solid; }
+.file			{ font-size:9pt; color:#393939; background-color:#F3F3F3; border-width:1; border-color:#696969; border-style:solid; }
+.select		{ font-size:9pt; color:#393939; background-color:#F3F3F3; border-width:1; border-color:#696969; border-style:solid; }
+.radio		{ font-size:9pt; color:#393939; background-color:#F3F3F3; border-width:1; border-color:#696969; border-style:solid; }
+.text			{ font-size:9pt; color:#393939; background-color:#F3F3F3; border-width:1; border-color:#696969; border-style:solid; }
+.textarea	{ font-size:9pt; color:#393939; background-color:#F3F3F3; border-width:1; border-color:#696969; border-style:solid; }
+-->
+</style>
