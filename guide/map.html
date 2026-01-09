@@ -85,16 +85,13 @@
                 <!-- Contact Information with Image -->
                 <div style="height: 2px; background: linear-gradient(to right, var(--primary-color), transparent); margin: 50px 0 30px 0;"></div>
                 <h3 class="section-subtitle">한국교회 예절교육원</h3>
-                <div class="info-card" style="display: block;">
+                <div class="info-card map-contact-info">
                     <div class="info-card-content">
-                        <h3 style="width: 100%; text-align: left; margin-bottom: 30px; padding-left: 2em;">참빛선교센터</h3>
-                        <div style="display: flex; gap: 80px; justify-content: center;">
-                            <div style="flex: 0 0 auto;">
-                                <p style="padding-left: 2.5em; text-indent: -2.5em;"><strong>주 소:</strong> 서울특별시 성동구<br>
-                                행당1동 138-7번지<br>
-                                은성빌딩 대한예수교장로회</p>
+                        <div class="map-contact-grid">
+                            <div>
+                                <p style="margin-bottom: 5px;"><strong>주 소:</strong> 서울특별시 성동구 행당1동 138-7번지 은성빌딩 대한예수교장로회</p>
                             </div>
-                            <div style="flex: 0 0 auto;">
+                            <div>
                                 <p style="margin-bottom: 5px;"><strong>휴대폰:</strong> 010-6336-4320</p>
                                 <p style="margin-bottom: 5px;"><strong>이메일:</strong> kangorchid@hanmail.net</p>
                                 <p style="margin-bottom: 5px;"><strong>담임목사:</strong> 강귀란</p>
@@ -102,6 +99,22 @@
                         </div>
                     </div>
                 </div>
+                <style>
+                    .map-contact-grid {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 30px;
+                    }
+                    @media (max-width: 768px) {
+                        .map-contact-grid {
+                            grid-template-columns: 1fr;
+                            gap: 20px;
+                        }
+                        .map-contact-info .info-card-content {
+                            padding: 20px !important;
+                        }
+                    }
+                </style>
 
                 <!-- Bible Verse Quote Box -->
                 <div class="quote-box">
