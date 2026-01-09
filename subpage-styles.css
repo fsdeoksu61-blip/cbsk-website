@@ -379,16 +379,39 @@
    Responsive Design for Subpages
    ========================================== */
 @media (max-width: 768px) {
+    /* Page Hero */
     .page-hero {
-        min-height: 200px;
+        min-height: 180px;
+        margin-bottom: 25px;
     }
 
     .page-hero-content h1 {
         font-size: 1.6rem;
+        margin-bottom: 12px;
     }
 
     .page-hero-content p {
         font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+        padding: 12px 0;
+        margin-bottom: 20px;
+    }
+
+    .breadcrumb-content {
+        font-size: 0.85rem;
+    }
+
+    .breadcrumb-content span {
+        margin: 0 6px;
+    }
+
+    /* Content Layout */
+    .page-content {
+        padding: 30px 0 50px;
     }
 
     .content-wrapper {
@@ -397,8 +420,47 @@
 
     .section-title {
         font-size: 1.5rem;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
     }
 
+    .section-subtitle {
+        font-size: 1.25rem;
+        margin: 25px 0 15px;
+    }
+
+    /* Content Box */
+    .content-box {
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    .content-box h3 {
+        font-size: 1.2rem;
+    }
+
+    /* Lists */
+    .content-list-detailed li {
+        padding: 12px 0 12px 25px;
+        font-size: 0.95rem;
+    }
+
+    /* Icon List */
+    .icon-list {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin: 20px 0;
+    }
+
+    .icon-list-item {
+        padding: 18px;
+    }
+
+    .icon-list-item strong {
+        font-size: 1rem;
+    }
+
+    /* Info Card & Profile Card */
     .info-card,
     .profile-card {
         grid-template-columns: 1fr;
@@ -414,32 +476,222 @@
 
     .info-card-image img,
     .profile-photo img {
-        max-width: 200px;
+        max-width: 180px;
     }
 
-    .icon-list {
-        grid-template-columns: 1fr;
+    .info-card-content h3,
+    .profile-info h3 {
+        font-size: 1.3rem;
+        text-align: center;
     }
 
+    .profile-info h4 {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    /* Map Section */
     .contact-info {
         grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .contact-card {
+        padding: 20px;
+    }
+
+    .contact-card h4 {
+        font-size: 1.1rem;
+    }
+
+    /* Quote Box */
+    .quote-box {
+        padding: 25px 20px;
+        margin: 25px 0;
+    }
+
+    .quote-box p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .quote-box cite {
+        font-size: 0.9rem;
     }
 }
 
 @media (max-width: 480px) {
-    .breadcrumb-content {
+    /* Page Hero */
+    .page-hero {
+        min-height: 150px;
+        margin-bottom: 20px;
+    }
+
+    .page-hero-content h1 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+
+    .page-hero-content p {
         font-size: 0.85rem;
+        line-height: 1.5;
+        padding: 0 10px;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+        padding: 10px 0;
+        margin-bottom: 15px;
+    }
+
+    .breadcrumb-content {
+        font-size: 0.8rem;
+        flex-wrap: wrap;
+    }
+
+    .breadcrumb-content span {
+        margin: 0 4px;
+    }
+
+    /* Content Layout */
+    .page-content {
+        padding: 20px 0 40px;
+    }
+
+    .content-wrapper {
+        padding: 20px 15px;
     }
 
     .section-title {
         font-size: 1.3rem;
+        margin-bottom: 18px;
+        padding-bottom: 10px;
     }
 
     .section-subtitle {
         font-size: 1.1rem;
+        margin: 20px 0 12px;
     }
 
+    /* Content Box */
     .content-box {
-        padding: 20px;
+        padding: 18px;
+        margin: 15px 0;
+    }
+
+    .content-box h3 {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+
+    .content-box p {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    /* Lists */
+    .content-list-detailed li {
+        padding: 10px 0 10px 22px;
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    .content-list-detailed li::before {
+        font-size: 1rem;
+    }
+
+    /* Icon List */
+    .icon-list {
+        gap: 12px;
+        margin: 15px 0;
+    }
+
+    .icon-list-item {
+        padding: 15px;
+    }
+
+    .icon-list-item strong {
+        font-size: 0.95rem;
+    }
+
+    .icon-list-item p {
+        font-size: 0.85rem;
+    }
+
+    /* Info Card & Profile Card */
+    .info-card,
+    .profile-card {
+        padding: 20px 15px;
+        gap: 18px;
+        margin: 15px 0;
+    }
+
+    .info-card-image img,
+    .profile-photo img {
+        max-width: 150px;
+    }
+
+    .info-card-content h3,
+    .profile-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .info-card-content p {
+        font-size: 0.9rem;
+    }
+
+    .profile-info h4 {
+        font-size: 0.95rem;
+    }
+
+    .profile-details li {
+        font-size: 0.9rem;
+        padding: 6px 0 6px 22px;
+    }
+
+    /* Map Section */
+    .map-container {
+        margin: 20px 0;
+    }
+
+    .contact-info {
+        gap: 12px;
+        margin: 20px 0;
+    }
+
+    .contact-card {
+        padding: 18px;
+    }
+
+    .contact-card h4 {
+        font-size: 1.05rem;
+        margin-bottom: 12px;
+    }
+
+    .contact-card p {
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+
+    /* Quote Box */
+    .quote-box {
+        padding: 20px 15px;
+        margin: 20px 0;
+    }
+
+    .quote-box p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 12px;
+    }
+
+    .quote-box cite {
+        font-size: 0.85rem;
+    }
+
+    .quote-box ol,
+    .quote-box ul {
+        padding-left: 15px;
+        font-size: 0.9rem;
     }
 }
