@@ -76,9 +76,30 @@ app.get('/api/posts', async (req, res) => {
   }
 });
 
+// 게시글 상세 조회 (모든 사용자)
+app.get('/api/posts/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const result = await pool.query(
+      'SELECT id, title, content, image_url, date FROM posts WHERE id = $1',
+      [id]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Post not found' });
+    }
+
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Error fetching post:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 // 게시글 작성 (관리자만)
 app.post('/api/posts', requireAuth, async (req, res) => {
-  const { title, date } = req.body;
+  const { title, content, image_url, date } = req.body;
 
   if (!title) {
     return res.status(400).json({ error: 'Title is required' });
@@ -86,8 +107,8 @@ app.post('/api/posts', requireAuth, async (req, res) => {
 
   try {
     const result = await pool.query(
-      'INSERT INTO posts (title, date) VALUES ($1, $2) RETURNING *',
-      [title, date || new Date().toISOString().split('T')[0]]
+      'INSERT INTO posts (title, content, image_url, date) VALUES ($1, $2, $3, $4) RETURNING *',
+      [title, content || null, image_url || null, date || new Date().toISOString().split('T')[0]]
     );
     res.json(result.rows[0]);
   } catch (error) {
@@ -99,7 +120,7 @@ app.post('/api/posts', requireAuth, async (req, res) => {
 // 게시글 수정 (관리자만)
 app.put('/api/posts/:id', requireAuth, async (req, res) => {
   const { id } = req.params;
-  const { title, date } = req.body;
+  const { title, content, image_url, date } = req.body;
 
   if (!title) {
     return res.status(400).json({ error: 'Title is required' });
@@ -107,8 +128,8 @@ app.put('/api/posts/:id', requireAuth, async (req, res) => {
 
   try {
     const result = await pool.query(
-      'UPDATE posts SET title = $1, date = $2 WHERE id = $3 RETURNING *',
-      [title, date, id]
+      'UPDATE posts SET title = $1, content = $2, image_url = $3, date = $4 WHERE id = $5 RETURNING *',
+      [title, content || null, image_url || null, date, id]
     );
 
     if (result.rows.length === 0) {

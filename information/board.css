@@ -156,6 +156,58 @@
     margin-top: 25px;
 }
 
+/* 클릭 가능한 제목 */
+.list-title.clickable {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.list-title.clickable:hover {
+    color: #8B4513;
+    text-decoration: underline;
+}
+
+/* 텍스트 영역 */
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.form-group textarea:focus {
+    outline: none;
+    border-color: #8B4513;
+}
+
+/* 상세보기 모달 */
+.modal-content-large {
+    max-width: 700px;
+}
+
+.view-content {
+    margin: 20px 0;
+}
+
+.view-meta {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.view-text-content {
+    line-height: 1.8;
+    color: #333;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
 /* 반응형 */
 @media (max-width: 768px) {
     .board-actions {
@@ -169,6 +221,10 @@
 
     .modal-content {
         padding: 20px;
+    }
+
+    .modal-content-large {
+        max-width: 95%;
     }
 
     .card-header {

@@ -52,7 +52,7 @@ function renderPosts() {
 
     postsList.innerHTML = posts.map(post => `
         <li>
-            <span class="list-title">${escapeHtml(post.title)}</span>
+            <span class="list-title clickable" onclick="viewPost(${post.id})">${escapeHtml(post.title)}</span>
             <span class="list-date">${formatDate(post.date)}</span>
             ${isAuthenticated ? `
                 <span class="list-actions">
@@ -121,22 +121,58 @@ function showNewPostModal() {
     document.getElementById('post-modal-title').textContent = '새 글 쓰기';
     document.getElementById('post-id').value = '';
     document.getElementById('post-title').value = '';
+    document.getElementById('post-content').value = '';
+    document.getElementById('post-image-url').value = '';
     document.getElementById('post-date').value = new Date().toISOString().split('T')[0];
     document.getElementById('post-modal').style.display = 'flex';
     document.getElementById('post-title').focus();
 }
 
-// 게시글 수정
-function editPost(id) {
-    const post = posts.find(p => p.id === id);
-    if (!post) return;
+// 게시글 상세보기
+async function viewPost(id) {
+    try {
+        const response = await fetch(`${API_URL}/posts/${id}`);
+        const post = await response.json();
 
-    document.getElementById('post-modal-title').textContent = '게시글 수정';
-    document.getElementById('post-id').value = post.id;
-    document.getElementById('post-title').value = post.title;
-    document.getElementById('post-date').value = post.date;
-    document.getElementById('post-modal').style.display = 'flex';
-    document.getElementById('post-title').focus();
+        document.getElementById('view-title').textContent = post.title;
+        document.getElementById('view-date').textContent = formatDate(post.date);
+        document.getElementById('view-text').textContent = post.content || '내용이 없습니다.';
+
+        // 이미지 표시
+        const imageContainer = document.getElementById('view-image-container');
+        const imageElement = document.getElementById('view-image');
+        if (post.image_url) {
+            imageElement.src = post.image_url;
+            imageContainer.style.display = 'block';
+        } else {
+            imageContainer.style.display = 'none';
+        }
+
+        document.getElementById('view-modal').style.display = 'flex';
+    } catch (error) {
+        console.error('Failed to load post:', error);
+        alert('게시글을 불러오는데 실패했습니다.');
+    }
+}
+
+// 게시글 수정
+async function editPost(id) {
+    try {
+        const response = await fetch(`${API_URL}/posts/${id}`);
+        const post = await response.json();
+
+        document.getElementById('post-modal-title').textContent = '게시글 수정';
+        document.getElementById('post-id').value = post.id;
+        document.getElementById('post-title').value = post.title;
+        document.getElementById('post-content').value = post.content || '';
+        document.getElementById('post-image-url').value = post.image_url || '';
+        document.getElementById('post-date').value = post.date;
+        document.getElementById('post-modal').style.display = 'flex';
+        document.getElementById('post-title').focus();
+    } catch (error) {
+        console.error('Failed to load post:', error);
+        alert('게시글을 불러오는데 실패했습니다.');
+    }
 }
 
 // 게시글 삭제
@@ -209,6 +245,8 @@ async function handlePostSubmit(e) {
 
     const id = document.getElementById('post-id').value;
     const title = document.getElementById('post-title').value.trim();
+    const content = document.getElementById('post-content').value.trim();
+    const image_url = document.getElementById('post-image-url').value.trim();
     const date = document.getElementById('post-date').value;
 
     if (!title) {
@@ -224,7 +262,7 @@ async function handlePostSubmit(e) {
             method,
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
-            body: JSON.stringify({ title, date })
+            body: JSON.stringify({ title, content, image_url, date })
         });
 
         if (response.ok) {
