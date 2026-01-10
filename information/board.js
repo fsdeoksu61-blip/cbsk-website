@@ -1,5 +1,5 @@
-// API URL 설정 (Railway 배포 후 변경 필요)
-const API_URL = 'http://localhost:3000/api';
+// API URL 설정 (Railway 배포 완료)
+const API_URL = 'https://hopeful-mindfulness-production-7106.up.railway.app/api';
 
 // 전역 상태
 let isAuthenticated = false;
