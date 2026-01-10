@@ -13,6 +13,7 @@
     <meta property="og:site_name" content="한국교회 예절교육원">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../subpage-styles.css">
+    <link rel="stylesheet" href="board.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -85,59 +86,68 @@
 
                 <!-- Articles List -->
                 <div class="content-card" style="margin-top: 30px;">
-                    <div class="card-header">
+                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
                         <h2>자료실 게시판</h2>
+                        <div class="board-actions">
+                            <button id="login-btn" class="btn-primary" style="display: inline-block;">로그인</button>
+                            <button id="logout-btn" class="btn-secondary" style="display: none;">로그아웃</button>
+                            <button id="new-post-btn" class="btn-primary" style="display: none;">새 글 쓰기</button>
+                        </div>
                     </div>
-                    <ul class="content-list">
-                        <li>
-                            <a href="#">
-                                <span class="list-title">상담의 기초와 실제 - 효과적인 상담 기법</span>
-                                <span class="list-date">2024.12.15</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="list-title">가족 상담의 이해와 적용</span>
-                                <span class="list-date">2024.12.10</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="list-title">교회 내 갈등 해결을 위한 상담 접근</span>
-                                <span class="list-date">2024.12.05</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="list-title">청소년 상담의 실제 - 사례를 중심으로</span>
-                                <span class="list-date">2024.11.28</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="list-title">목회 상담과 심리 상담의 통합적 접근</span>
-                                <span class="list-date">2024.11.20</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="list-title">결혼 및 부부 상담 가이드</span>
-                                <span class="list-date">2024.11.15</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="list-title">우울증과 불안 장애에 대한 이해</span>
-                                <span class="list-date">2024.11.10</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="list-title">성경적 상담의 원리와 실제</span>
-                                <span class="list-date">2024.11.05</span>
-                            </a>
-                        </li>
+                    <ul class="content-list" id="posts-list">
+                        <li style="text-align: center; padding: 20px;">게시글을 불러오는 중...</li>
                     </ul>
+                </div>
+
+                <!-- 로그인 모달 -->
+                <div id="login-modal" class="modal">
+                    <div class="modal-overlay"></div>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>관리자 로그인</h3>
+                            <button class="modal-close">&times;</button>
+                        </div>
+                        <form id="login-form">
+                            <div class="form-group">
+                                <label for="login-username">아이디</label>
+                                <input type="text" id="login-username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="login-password">비밀번호</label>
+                                <input type="password" id="login-password" required>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-primary">로그인</button>
+                                <button type="button" class="btn-secondary modal-close">취소</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 게시글 작성/수정 모달 -->
+                <div id="post-modal" class="modal">
+                    <div class="modal-overlay"></div>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 id="post-modal-title">새 글 쓰기</h3>
+                            <button class="modal-close">&times;</button>
+                        </div>
+                        <form id="post-form">
+                            <input type="hidden" id="post-id">
+                            <div class="form-group">
+                                <label for="post-title">제목</label>
+                                <input type="text" id="post-title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="post-date">작성일</label>
+                                <input type="date" id="post-date" required>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-primary">저장</button>
+                                <button type="button" class="btn-secondary modal-close">취소</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
                 <!-- Additional Resources -->
@@ -189,5 +199,6 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script src="board.js"></script>
 </body>
 </html>
