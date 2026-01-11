@@ -8,6 +8,13 @@ const { pool, initDB } = require('./db');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// 환경변수 디버깅
+console.log('===== Environment Variables =====');
+console.log('NODE_ENV:', process.env.NODE_ENV);
+console.log('FRONTEND_URL:', process.env.FRONTEND_URL);
+console.log('PORT:', PORT);
+console.log('=================================');
+
 // 미들웨어
 app.use(cors({
   origin: process.env.FRONTEND_URL || 'http://localhost:8080',
