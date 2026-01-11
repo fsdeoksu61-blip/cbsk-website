@@ -1,5 +1,5 @@
-// API URL 설정 (Railway 배포 완료)
-const API_URL = 'https://hopeful-mindfulness-production-7106.up.railway.app/api';
+// API URL 설정 (커스텀 도메인 사용)
+const API_URL = 'https://api.cbsk.kr/api';
 
 // 전역 상태
 let isAuthenticated = false;
