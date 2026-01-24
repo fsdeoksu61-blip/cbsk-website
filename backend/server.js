@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session');
+const pgSession = require('connect-pg-simple')(session);
 const cors = require('cors');
 require('dotenv').config();
 
@@ -30,6 +31,11 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(session({
+  store: new pgSession({
+    pool: pool,
+    tableName: 'session',
+    createTableIfMissing: true
+  }),
   secret: process.env.SESSION_SECRET || 'default-secret-change-in-production',
   resave: false,
   saveUninitialized: false,
@@ -44,9 +50,16 @@ app.use(session({
 
 // 인증 미들웨어
 const requireAuth = (req, res, next) => {
+  console.log('[REQUIRE-AUTH]', {
+    sessionID: req.sessionID,
+    isAdmin: req.session?.isAdmin,
+    hasSession: !!req.session
+  });
+
   if (req.session && req.session.isAdmin) {
     next();
   } else {
+    console.log('[REQUIRE-AUTH] Unauthorized - session missing or not admin');
     res.status(401).json({ error: 'Unauthorized' });
   }
 };
@@ -57,10 +70,20 @@ const requireAuth = (req, res, next) => {
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
 
+  console.log('[LOGIN] Attempt:', { username, sessionID: req.sessionID });
+
   if (username === process.env.ADMIN_USERNAME && password === process.env.ADMIN_PASSWORD) {
     req.session.isAdmin = true;
-    res.json({ success: true, message: 'Login successful' });
+    req.session.save((err) => {
+      if (err) {
+        console.error('[LOGIN] Session save error:', err);
+        return res.status(500).json({ error: 'Session save failed' });
+      }
+      console.log('[LOGIN] Success! Session saved:', { sessionID: req.sessionID, isAdmin: req.session.isAdmin });
+      res.json({ success: true, message: 'Login successful' });
+    });
   } else {
+    console.log('[LOGIN] Failed: Invalid credentials');
     res.status(401).json({ error: 'Invalid credentials' });
   }
 });
@@ -73,6 +96,12 @@ app.post('/api/logout', (req, res) => {
 
 // 인증 확인
 app.get('/api/check-auth', (req, res) => {
+  console.log('[CHECK-AUTH]', {
+    sessionID: req.sessionID,
+    isAdmin: req.session?.isAdmin,
+    session: req.session
+  });
+
   if (req.session && req.session.isAdmin) {
     res.json({ authenticated: true });
   } else {
@@ -118,6 +147,12 @@ app.get('/api/posts/:id', async (req, res) => {
 app.post('/api/posts', requireAuth, async (req, res) => {
   const { title, content, image_url, date } = req.body;
 
+  console.log('[CREATE POST]', {
+    sessionID: req.sessionID,
+    isAdmin: req.session?.isAdmin,
+    title
+  });
+
   if (!title) {
     return res.status(400).json({ error: 'Title is required' });
   }
@@ -127,9 +162,10 @@ app.post('/api/posts', requireAuth, async (req, res) => {
       'INSERT INTO posts (title, content, image_url, date) VALUES ($1, $2, $3, $4) RETURNING *',
       [title, content || null, image_url || null, date || new Date().toISOString().split('T')[0]]
     );
+    console.log('[CREATE POST] Success:', result.rows[0].id);
     res.json(result.rows[0]);
   } catch (error) {
-    console.error('Error creating post:', error);
+    console.error('[CREATE POST] Error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
