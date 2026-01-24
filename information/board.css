@@ -172,12 +172,37 @@
 /* 클릭 가능한 제목 */
 .list-title.clickable {
     cursor: pointer;
-    transition: color 0.3s;
+    transition: all 0.3s;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.98rem;
+    position: relative;
+    padding-left: 18px;
+}
+
+/* 제목 앞 아이콘 (클릭 가능 표시) */
+.list-title.clickable::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: #8B4513;
+    font-size: 0.75rem;
+    transition: transform 0.3s;
 }
 
 .list-title.clickable:hover {
     color: #8B4513;
-    text-decoration: underline;
+}
+
+.list-title.clickable:hover::before {
+    transform: translateX(3px);
+}
+
+/* 날짜 스타일 */
+.list-date {
+    color: #999;
+    font-size: 0.85rem;
+    font-weight: 400;
 }
 
 /* 텍스트 영역 */
@@ -253,9 +278,25 @@
         padding: 15px 20px;
     }
 
+    /* 모바일에서 제목 더 강조 */
+    .list-title.clickable {
+        font-weight: 700;
+        font-size: 1rem;
+        color: #222;
+        padding-bottom: 6px;
+        padding-left: 20px;
+    }
+
+    /* 모바일에서 아이콘 크게 */
+    .list-title.clickable::before {
+        font-size: 0.85rem;
+        top: 1px;
+    }
+
     .list-date {
         margin-left: 0;
-        margin-top: 8px;
+        margin-top: 0;
         font-size: 0.8rem;
+        color: #aaa;
     }
 }
