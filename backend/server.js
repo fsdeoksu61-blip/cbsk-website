@@ -43,8 +43,8 @@ app.use(session({
   cookie: {
     secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
-    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-    domain: process.env.NODE_ENV === 'production' ? '.cbsk.kr' : undefined,
+    sameSite: 'lax', // 같은 도메인이므로 lax 사용
+    // domain 설정 제거 - 같은 도메인에서는 필요 없음
     maxAge: 24 * 60 * 60 * 1000 // 24시간
   }
 }));
