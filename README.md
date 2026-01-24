@@ -38,7 +38,7 @@ cbsk/
 ├── image/              # 이미지 파일들
 ├── guide/              # 센터 소개 페이지들
 ├── program/            # 프로그램 안내 페이지들
-├── counsel/            # 상담 신청 페이지들
+├── counsel/            # 강의 신청 페이지들
 ├── information/        # 자료실 페이지들
 └── form/               # 폼 관련 파일들
 ```
