@@ -185,8 +185,8 @@
     <section class="page-hero">
         <div class="container">
             <div class="page-hero-content">
-                <h1>교육신청서 작성</h1>
-                <p>한국교회 예절교육원 교육신청입니다,<br>
+                <h1>강의신청서 작성</h1>
+                <p>한국교회 예절교육원 강의 신청입니다.<br>
                 교회예절과 매너 교육을 통해<br>
                 목회자와 성도들이 하나님을 영화롭게 하고<br>
                 건강한 교회 문화를 만들 수 있도록 돕겠습니다.</p>
@@ -200,9 +200,9 @@
             <div class="breadcrumb-content">
                 <a href="../index.html">HOME</a>
                 <span>></span>
-                <a href="counsel.html">교육신청</a>
+                <a href="counsel.html">강의신청</a>
                 <span>></span>
-                <span class="breadcrumb-current">신청서 작성</span>
+                <span class="breadcrumb-current">강의신청서 작성</span>
             </div>
         </div>
     </section>
@@ -218,8 +218,8 @@
                 <!-- Form Note -->
                 <div class="form-note">
                     <p><strong>신청 안내</strong></p>
-                    <p>1. 모든 상담 내용은 철저히 비밀이 보장됩니다.</p>
-                    <p>2. 신청서를 작성하시면 담당자가 확인 후 연락드립니다.</p>
+                    <p>1. 강의 신청서를 작성하시면 담당자가 확인 후 연락드립니다.</p>
+                    <p>2. 강의 일정과 비용은 상담을 통해 조율됩니다.</p>
                     <p>3. <span style="color: #e74c3c;">*</span> 표시된 항목은 필수 입력 사항입니다.</p>
                 </div>
 
@@ -290,101 +290,119 @@
                         </div>
 
                         <!-- Church Information -->
-                        <h3 class="section-subtitle" style="margin-top: 30px;">교회 정보</h3>
+                        <h3 class="section-subtitle" style="margin-top: 30px;">교회 및 기관 정보</h3>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="church">출석교회</label>
-                                <input type="text" id="church" name="church">
+                                <label for="church">교회/기관명 <span class="required">*</span></label>
+                                <input type="text" id="church" name="church" placeholder="강의를 요청하시는 교회나 기관명을 입력해주세요" required>
                             </div>
                             <div class="form-group">
-                                <label for="faith_year">신앙생활 기간</label>
-                                <select id="faith_year" name="faith_year">
-                                    <option value="">선택하세요</option>
-                                    <option value="not_believer">비신자</option>
-                                    <option value="new">1년 미만</option>
-                                    <option value="1-3">1-3년</option>
-                                    <option value="3-5">3-5년</option>
-                                    <option value="5-10">5-10년</option>
-                                    <option value="10+">10년 이상</option>
-                                </select>
+                                <label for="position">직책/직분</label>
+                                <input type="text" id="position" name="position" placeholder="예: 담임목사, 전도사, 평신도 등">
                             </div>
                         </div>
 
-                        <!-- Counseling Information -->
-                        <h3 class="section-subtitle" style="margin-top: 30px;">상담 정보</h3>
+                        <div class="form-group">
+                            <label for="church_address">교회/기관 주소</label>
+                            <input type="text" id="church_address" name="church_address" placeholder="강의가 진행될 장소">
+                        </div>
+
+                        <!-- Lecture Information -->
+                        <h3 class="section-subtitle" style="margin-top: 30px;">강의 정보</h3>
 
                         <div class="form-group">
-                            <label for="counseling_type">상담 유형 <span class="required">*</span></label>
-                            <select id="counseling_type" name="counseling_type" required>
+                            <label for="lecture_type">강의 유형 <span class="required">*</span></label>
+                            <select id="lecture_type" name="lecture_type" required>
                                 <option value="">선택하세요</option>
-                                <option value="personal">개인상담</option>
-                                <option value="family">가족상담</option>
-                                <option value="couple">부부상담</option>
-                                <option value="youth">청소년상담</option>
-                                <option value="church">교회상담</option>
-                                <option value="spiritual">영적상담</option>
-                                <option value="other">기타</option>
+                                <option value="church_etiquette">교회예절 강의</option>
+                                <option value="table_manner">테이블매너 강의</option>
+                                <option value="business_manner">비즈니스매너 강의</option>
+                                <option value="social_manner">사회생활 매너 강의</option>
+                                <option value="youth_manner">청소년 예절교육</option>
+                                <option value="leadership">리더십 교육</option>
+                                <option value="communication">소통과 관계 개선</option>
+                                <option value="custom">맞춤형 강의 (상담 후 결정)</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label>상담 주제 (중복 선택 가능)</label>
+                            <label>관심 있는 강의 주제 (중복 선택 가능)</label>
                             <div class="checkbox-group">
-                                <label><input type="checkbox" name="topic" value="depression"> 우울/불안</label>
-                                <label><input type="checkbox" name="topic" value="relationship"> 대인관계</label>
-                                <label><input type="checkbox" name="topic" value="marriage"> 결혼/부부관계</label>
-                                <label><input type="checkbox" name="topic" value="family"> 가족갈등</label>
-                                <label><input type="checkbox" name="topic" value="addiction"> 중독문제</label>
-                                <label><input type="checkbox" name="topic" value="faith"> 신앙문제</label>
-                                <label><input type="checkbox" name="topic" value="career"> 진로/직업</label>
+                                <label><input type="checkbox" name="topic" value="worship_etiquette"> 예배 예절</label>
+                                <label><input type="checkbox" name="topic" value="greeting"> 인사 예절</label>
+                                <label><input type="checkbox" name="topic" value="dining"> 식사 예절</label>
+                                <label><input type="checkbox" name="topic" value="conversation"> 대화 예절</label>
+                                <label><input type="checkbox" name="topic" value="meeting"> 모임/회의 예절</label>
+                                <label><input type="checkbox" name="topic" value="service"> 섬김과 봉사</label>
+                                <label><input type="checkbox" name="topic" value="relationship"> 관계 형성과 소통</label>
                                 <label><input type="checkbox" name="topic" value="other"> 기타</label>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="preferred_date">희망 상담일</label>
-                            <input type="date" id="preferred_date" name="preferred_date">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="preferred_time">희망 상담시간</label>
-                            <select id="preferred_time" name="preferred_time">
-                                <option value="">선택하세요</option>
-                                <option value="morning">오전 (10:00-12:00)</option>
-                                <option value="afternoon">오후 (14:00-17:00)</option>
-                                <option value="evening">저녁 (18:00-20:00)</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="content">상담 받고 싶은 내용 <span class="required">*</span></label>
-                            <textarea id="content" name="content" placeholder="상담을 원하시는 내용을 자세히 적어주세요. 모든 내용은 비밀이 보장됩니다." required></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="previous_counseling">이전 상담 경험</label>
-                            <div class="radio-group">
-                                <label><input type="radio" name="previous_counseling" value="yes"> 있음</label>
-                                <label><input type="radio" name="previous_counseling" value="no" checked> 없음</label>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="participants">예상 참석 인원 <span class="required">*</span></label>
+                                <select id="participants" name="participants" required>
+                                    <option value="">선택하세요</option>
+                                    <option value="10-30">10~30명</option>
+                                    <option value="30-50">30~50명</option>
+                                    <option value="50-100">50~100명</option>
+                                    <option value="100-200">100~200명</option>
+                                    <option value="200+">200명 이상</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="duration">희망 강의 시간</label>
+                                <select id="duration" name="duration">
+                                    <option value="">선택하세요</option>
+                                    <option value="1hour">1시간</option>
+                                    <option value="2hours">2시간</option>
+                                    <option value="half_day">반나절 (3~4시간)</option>
+                                    <option value="full_day">하루 (6~8시간)</option>
+                                    <option value="multiple">여러 회차</option>
+                                </select>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="how_know">센터를 알게 된 경로</label>
+                            <label for="preferred_date">희망 강의일 <span class="required">*</span></label>
+                            <input type="date" id="preferred_date" name="preferred_date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferred_time">희망 강의 시간대</label>
+                            <select id="preferred_time" name="preferred_time">
+                                <option value="">선택하세요</option>
+                                <option value="morning">오전 (09:00-12:00)</option>
+                                <option value="afternoon">오후 (14:00-17:00)</option>
+                                <option value="evening">저녁 (18:00-21:00)</option>
+                                <option value="weekend">주말</option>
+                                <option value="flexible">유동적 (상담 후 조율)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="content">강의 요청 내용 <span class="required">*</span></label>
+                            <textarea id="content" name="content" placeholder="어떤 강의를 원하시는지 구체적으로 적어주세요. 교회나 기관의 특성, 참석 대상자의 특징, 강의를 통해 기대하는 효과 등을 자세히 설명해주시면 더 좋은 강의를 준비할 수 있습니다." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="how_know">교육원을 알게 된 경로</label>
                             <select id="how_know" name="how_know">
                                 <option value="">선택하세요</option>
                                 <option value="website">홈페이지 검색</option>
                                 <option value="church">교회 소개</option>
                                 <option value="friend">지인 추천</option>
                                 <option value="pastor">목회자 추천</option>
+                                <option value="previous">이전 강의 참석</option>
                                 <option value="other">기타</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="notes">기타 문의사항</label>
-                            <textarea id="notes" name="notes" placeholder="추가로 전달하고 싶은 내용이 있으시면 적어주세요." style="min-height: 100px;"></textarea>
+                            <label for="notes">추가 요청사항 및 문의사항</label>
+                            <textarea id="notes" name="notes" placeholder="강의 준비에 참고할 사항이나 특별히 강조해주셨으면 하는 내용, 시설 및 장비 관련 사항 등을 적어주세요." style="min-height: 100px;"></textarea>
                         </div>
 
                         <!-- Privacy Agreement -->
@@ -396,9 +414,9 @@
                                 </label>
                             </div>
                             <div style="margin-top: 10px; padding: 15px; background: #f8f9fa; border-radius: 4px; font-size: 13px; color: #666;">
-                                수집항목: 이름, 연락처, 이메일, 주소, 상담내용<br>
-                                이용목적: 상담 서비스 제공, 상담 예약 및 일정 관리<br>
-                                보유기간: 상담 종료 후 1년
+                                수집항목: 이름, 연락처, 이메일, 주소, 교회/기관 정보, 강의 요청 내용<br>
+                                이용목적: 강의 서비스 제공, 강의 일정 조율 및 관리<br>
+                                보유기간: 강의 종료 후 1년
                             </div>
                         </div>
 
@@ -413,9 +431,10 @@
 
                 <!-- Additional Information -->
                 <div class="quote-box" style="margin-top: 40px;">
-                    <h3>상담 안내</h3>
+                    <h3>강의 신청 안내</h3>
                     <p style="margin-top: 15px; line-height: 1.8;">
                         신청하신 내용은 담당자가 확인 후 1-2일 내에 연락드립니다.<br>
+                        강의 일정, 내용, 비용 등은 상담을 통해 조율됩니다.<br>
                         급하신 경우 아래 연락처로 직접 연락주시기 바랍니다.
                     </p>
                     <p style="margin-top: 20px; font-weight: 600;">
