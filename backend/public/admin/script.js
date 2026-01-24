@@ -290,11 +290,13 @@ async function handlePostSubmit(e) {
     try {
         // 파일이 선택되었으면 먼저 업로드
         if (imageFile) {
-            const uploadedUrl = await uploadImage(imageFile);
-            if (uploadedUrl) {
+            try {
+                const uploadedUrl = await uploadImage(imageFile);
                 image_url = uploadedUrl;
-            } else {
-                alert('이미지 업로드에 실패했습니다.');
+                console.log('[SUBMIT] Image uploaded successfully:', uploadedUrl);
+            } catch (uploadError) {
+                alert('이미지 업로드에 실패했습니다.\n\n' + uploadError.message);
+                console.error('[SUBMIT] Image upload failed:', uploadError);
                 return;
             }
         }
@@ -374,23 +376,35 @@ async function uploadImage(file) {
     formData.append('image', file);
 
     try {
+        console.log('[UPLOAD] Attempting to upload image:', {
+            filename: file.name,
+            size: file.size,
+            type: file.type
+        });
+
         const response = await fetch(`${API_URL}/upload`, {
             method: 'POST',
             credentials: 'include',
             body: formData
         });
 
+        console.log('[UPLOAD] Response status:', response.status);
+
         if (response.ok) {
             const data = await response.json();
+            console.log('[UPLOAD] Success:', data);
             return data.url;
         } else {
             const error = await response.json();
-            console.error('Upload failed:', error);
-            return null;
+            console.error('[UPLOAD] Failed:', {
+                status: response.status,
+                error: error
+            });
+            throw new Error(`서버 오류 (${response.status}): ${error.error || '알 수 없는 오류'}`);
         }
     } catch (error) {
-        console.error('Upload error:', error);
-        return null;
+        console.error('[UPLOAD] Error:', error);
+        throw error;
     }
 }
 

@@ -27,6 +27,13 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
+// Cloudinary 설정 확인
+console.log('===== Cloudinary Configuration =====');
+console.log('Cloud Name:', process.env.CLOUDINARY_CLOUD_NAME ? '설정됨' : '❌ 미설정');
+console.log('API Key:', process.env.CLOUDINARY_API_KEY ? '설정됨' : '❌ 미설정');
+console.log('API Secret:', process.env.CLOUDINARY_API_SECRET ? '설정됨' : '❌ 미설정');
+console.log('===================================');
+
 // Multer + Cloudinary 스토리지 설정
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
@@ -183,9 +190,30 @@ app.get('/api/check-auth', (req, res) => {
 });
 
 // 이미지 업로드 (관리자만)
-app.post('/api/upload', requireAuth, upload.single('image'), async (req, res) => {
+app.post('/api/upload', requireAuth, (req, res, next) => {
+  upload.single('image')(req, res, (err) => {
+    if (err) {
+      console.error('[UPLOAD] Multer error:', err);
+      if (err instanceof multer.MulterError) {
+        if (err.code === 'LIMIT_FILE_SIZE') {
+          return res.status(400).json({ error: '파일 크기가 5MB를 초과했습니다.' });
+        }
+        return res.status(400).json({ error: `파일 업로드 오류: ${err.message}` });
+      }
+      return res.status(400).json({ error: err.message });
+    }
+    next();
+  });
+}, async (req, res) => {
   try {
+    console.log('[UPLOAD] Request received:', {
+      hasFile: !!req.file,
+      sessionID: req.sessionID,
+      isAdmin: req.session?.isAdmin
+    });
+
     if (!req.file) {
+      console.error('[UPLOAD] No file in request');
       return res.status(400).json({ error: '이미지 파일이 필요합니다.' });
     }
 
@@ -202,6 +230,7 @@ app.post('/api/upload', requireAuth, upload.single('image'), async (req, res) =>
     });
   } catch (error) {
     console.error('[UPLOAD] Error:', error);
+    console.error('[UPLOAD] Error stack:', error.stack);
     res.status(500).json({ error: '이미지 업로드 실패: ' + error.message });
   }
 });
