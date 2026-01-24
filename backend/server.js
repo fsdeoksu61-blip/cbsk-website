@@ -38,6 +38,7 @@ const sessionStore = new pgSession({
 });
 
 // 세션 설정
+// Railway 환경에서는 내부적으로 HTTP를 사용하므로 secure: false 필요
 app.use(session({
   store: sessionStore,
   secret: process.env.SESSION_SECRET || 'default-secret-change-in-production',
@@ -45,13 +46,13 @@ app.use(session({
   saveUninitialized: false,
   rolling: true, // 매 요청마다 세션 갱신
   cookie: {
-    secure: false, // HTTPS 강제 해제 (테스트용)
-    httpOnly: true,
-    sameSite: 'lax',
+    secure: false, // Railway HTTPS 프록시 환경에서는 false 필요
+    httpOnly: true, // XSS 공격 방지
+    sameSite: 'lax', // CSRF 공격 방지
     maxAge: 24 * 60 * 60 * 1000, // 24시간
     path: '/' // 모든 경로에서 쿠키 사용
   },
-  name: 'cbsk.sid' // 세션 쿠키 이름 명시
+  name: 'cbsk.sid' // 세션 쿠키 이름
 }));
 
 // 인증 미들웨어
