@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지 - 한국교회 예절교육원</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- 로그인 화면 -->
+        <div id="login-screen" class="screen">
+            <div class="login-card">
+                <h1>관리자 로그인</h1>
+                <p class="subtitle">한국교회 예절교육원 자료실 관리</p>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">아이디</label>
+                        <input type="text" id="username" required autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">비밀번호</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">로그인</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- 관리 화면 -->
+        <div id="admin-screen" class="screen" style="display: none;">
+            <header class="admin-header">
+                <h1>자료실 관리</h1>
+                <div class="header-actions">
+                    <button id="new-post-btn" class="btn btn-primary">새 글 쓰기</button>
+                    <button id="logout-btn" class="btn btn-secondary">로그아웃</button>
+                </div>
+            </header>
+
+            <div class="posts-container">
+                <div class="posts-header">
+                    <h2>게시글 목록</h2>
+                    <p class="posts-count">총 <span id="posts-count">0</span>개의 게시글</p>
+                </div>
+                <div id="posts-list" class="posts-list">
+                    <div class="loading">게시글을 불러오는 중...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 게시글 작성/수정 모달 -->
+    <div id="post-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">새 글 쓰기</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="post-form">
+                <input type="hidden" id="post-id">
+                <div class="form-group">
+                    <label for="post-title">제목 <span class="required">*</span></label>
+                    <input type="text" id="post-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="post-content">내용</label>
+                    <textarea id="post-content" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="post-image">이미지 URL</label>
+                    <input type="url" id="post-image" placeholder="https://example.com/image.jpg">
+                    <small>이미지 URL을 입력하세요 (선택사항)</small>
+                </div>
+                <div class="form-group">
+                    <label for="post-date">작성일 <span class="required">*</span></label>
+                    <input type="date" id="post-date" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">저장</button>
+                    <button type="button" class="btn btn-secondary modal-close">취소</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 게시글 상세보기 모달 -->
+    <div id="view-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3 id="view-title"></h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="view-content">
+                <div class="view-meta">
+                    <span id="view-date"></span>
+                </div>
+                <div id="view-image-container" style="display: none;">
+                    <img id="view-image" src="" alt="게시글 이미지">
+                </div>
+                <div id="view-text" class="view-text"></div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary modal-close">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

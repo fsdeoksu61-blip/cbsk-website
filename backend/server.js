@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const pgSession = require('connect-pg-simple')(session);
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
 const { pool, initDB } = require('./db');
@@ -63,6 +64,10 @@ const requireAuth = (req, res, next) => {
     res.status(401).json({ error: 'Unauthorized' });
   }
 };
+
+// ===== Static Files =====
+// 관리자 페이지 정적 파일 서빙
+app.use('/admin', express.static(path.join(__dirname, 'public/admin')));
 
 // ===== API 엔드포인트 =====
 
