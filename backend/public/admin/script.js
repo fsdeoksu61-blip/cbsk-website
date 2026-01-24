@@ -71,6 +71,18 @@ function setupEventListeners() {
     // 게시글 폼
     postForm.addEventListener('submit', handlePostSubmit);
 
+    // 이미지 파일 선택
+    const imageFileInput = document.getElementById('post-image-file');
+    if (imageFileInput) {
+        imageFileInput.addEventListener('change', handleImageFileChange);
+    }
+
+    // 이미지 미리보기 제거
+    const removePreviewBtn = document.getElementById('remove-preview');
+    if (removePreviewBtn) {
+        removePreviewBtn.addEventListener('click', removeImagePreview);
+    }
+
     // 모달 닫기
     document.querySelectorAll('.modal-close, .modal-overlay').forEach(el => {
         el.addEventListener('click', (e) => {
@@ -170,7 +182,9 @@ function showNewPostModal() {
     document.getElementById('post-title').value = '';
     document.getElementById('post-content').value = '';
     document.getElementById('post-image').value = '';
+    document.getElementById('post-image-file').value = '';
     document.getElementById('post-date').value = new Date().toISOString().split('T')[0];
+    document.getElementById('image-preview').style.display = 'none';
     postModal.classList.add('show');
     document.getElementById('post-title').focus();
 }
@@ -216,7 +230,17 @@ async function editPost(id) {
         document.getElementById('post-title').value = post.title;
         document.getElementById('post-content').value = post.content || '';
         document.getElementById('post-image').value = post.image_url || '';
+        document.getElementById('post-image-file').value = '';
         document.getElementById('post-date').value = post.date;
+
+        // 기존 이미지가 있으면 미리보기 표시
+        if (post.image_url) {
+            document.getElementById('preview-img').src = post.image_url;
+            document.getElementById('image-preview').style.display = 'block';
+        } else {
+            document.getElementById('image-preview').style.display = 'none';
+        }
+
         postModal.classList.add('show');
         document.getElementById('post-title').focus();
     } catch (error) {
@@ -254,18 +278,30 @@ async function handlePostSubmit(e) {
     const id = document.getElementById('post-id').value;
     const title = document.getElementById('post-title').value.trim();
     const content = document.getElementById('post-content').value.trim();
-    const image_url = document.getElementById('post-image').value.trim();
+    let image_url = document.getElementById('post-image').value.trim();
     const date = document.getElementById('post-date').value;
+    const imageFile = document.getElementById('post-image-file').files[0];
 
     if (!title) {
         alert('제목을 입력해주세요.');
         return;
     }
 
-    const method = id ? 'PUT' : 'POST';
-    const url = id ? `${API_URL}/posts/${id}` : `${API_URL}/posts`;
-
     try {
+        // 파일이 선택되었으면 먼저 업로드
+        if (imageFile) {
+            const uploadedUrl = await uploadImage(imageFile);
+            if (uploadedUrl) {
+                image_url = uploadedUrl;
+            } else {
+                alert('이미지 업로드에 실패했습니다.');
+                return;
+            }
+        }
+
+        const method = id ? 'PUT' : 'POST';
+        const url = id ? `${API_URL}/posts/${id}` : `${API_URL}/posts`;
+
         const response = await fetch(url, {
             method,
             headers: { 'Content-Type': 'application/json' },
@@ -293,6 +329,69 @@ function closeAllModals() {
     document.querySelectorAll('.modal').forEach(modal => {
         modal.classList.remove('show');
     });
+}
+
+// 이미지 파일 선택 시 미리보기
+function handleImageFileChange(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // 파일 크기 체크 (5MB)
+    if (file.size > 5 * 1024 * 1024) {
+        alert('이미지 파일 크기는 5MB 이하여야 합니다.');
+        e.target.value = '';
+        return;
+    }
+
+    // 이미지 타입 체크
+    if (!file.type.startsWith('image/')) {
+        alert('이미지 파일만 업로드 가능합니다.');
+        e.target.value = '';
+        return;
+    }
+
+    // 미리보기 표시
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        document.getElementById('preview-img').src = event.target.result;
+        document.getElementById('image-preview').style.display = 'block';
+        // URL 입력란 비우기
+        document.getElementById('post-image').value = '';
+    };
+    reader.readAsDataURL(file);
+}
+
+// 이미지 미리보기 제거
+function removeImagePreview() {
+    document.getElementById('post-image-file').value = '';
+    document.getElementById('image-preview').style.display = 'none';
+    document.getElementById('preview-img').src = '';
+}
+
+// 이미지 업로드
+async function uploadImage(file) {
+    const formData = new FormData();
+    formData.append('image', file);
+
+    try {
+        const response = await fetch(`${API_URL}/upload`, {
+            method: 'POST',
+            credentials: 'include',
+            body: formData
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            return data.url;
+        } else {
+            const error = await response.json();
+            console.error('Upload failed:', error);
+            return null;
+        }
+    } catch (error) {
+        console.error('Upload error:', error);
+        return null;
+    }
 }
 
 // 유틸리티 함수

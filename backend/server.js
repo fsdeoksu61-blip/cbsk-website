@@ -6,6 +6,9 @@ const path = require('path');
 require('dotenv').config();
 
 const { pool, initDB } = require('./db');
+const cloudinary = require('cloudinary').v2;
+const multer = require('multer');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,6 +19,37 @@ console.log('NODE_ENV:', process.env.NODE_ENV);
 console.log('FRONTEND_URL:', process.env.FRONTEND_URL);
 console.log('PORT:', PORT);
 console.log('=================================');
+
+// Cloudinary 설정
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+// Multer + Cloudinary 스토리지 설정
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'cbsk-board',
+    allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
+    transformation: [{ width: 1200, height: 1200, crop: 'limit' }]
+  }
+});
+
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 5 * 1024 * 1024 // 5MB 제한
+  },
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype.startsWith('image/')) {
+      cb(null, true);
+    } else {
+      cb(new Error('이미지 파일만 업로드 가능합니다.'), false);
+    }
+  }
+});
 
 // 미들웨어
 app.use(cors({
@@ -145,6 +179,30 @@ app.get('/api/check-auth', (req, res) => {
     res.json({ authenticated: true });
   } else {
     res.json({ authenticated: false });
+  }
+});
+
+// 이미지 업로드 (관리자만)
+app.post('/api/upload', requireAuth, upload.single('image'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: '이미지 파일이 필요합니다.' });
+    }
+
+    console.log('[UPLOAD] Success:', {
+      filename: req.file.filename,
+      url: req.file.path,
+      size: req.file.size
+    });
+
+    res.json({
+      success: true,
+      url: req.file.path,
+      publicId: req.file.filename
+    });
+  } catch (error) {
+    console.error('[UPLOAD] Error:', error);
+    res.status(500).json({ error: '이미지 업로드 실패: ' + error.message });
   }
 });
 
