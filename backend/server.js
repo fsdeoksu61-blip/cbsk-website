@@ -13,11 +13,8 @@ const PORT = process.env.PORT || 3000;
 // 환경변수 디버깅
 console.log('===== Environment Variables =====');
 console.log('NODE_ENV:', process.env.NODE_ENV);
-console.log('NODE_ENV === "production":', process.env.NODE_ENV === 'production');
 console.log('FRONTEND_URL:', process.env.FRONTEND_URL);
 console.log('PORT:', PORT);
-console.log('Cookie domain will be:', process.env.NODE_ENV === 'production' ? '.cbsk.kr' : 'undefined');
-console.log('Cookie sameSite will be:', process.env.NODE_ENV === 'production' ? 'none' : 'lax');
 console.log('=================================');
 
 // 미들웨어
@@ -48,7 +45,7 @@ app.use(session({
   saveUninitialized: false,
   rolling: true, // 매 요청마다 세션 갱신
   cookie: {
-    secure: process.env.NODE_ENV === 'production',
+    secure: false, // HTTPS 강제 해제 (테스트용)
     httpOnly: true,
     sameSite: 'lax',
     maxAge: 24 * 60 * 60 * 1000, // 24시간
