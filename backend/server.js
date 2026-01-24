@@ -31,37 +31,60 @@ app.use(cors({
   optionsSuccessStatus: 204
 }));
 app.use(express.json());
+
+// PostgreSQL 세션 스토어 설정
+const sessionStore = new pgSession({
+  pool: pool,
+  tableName: 'session',
+  createTableIfMissing: true,
+  pruneSessionInterval: 60 * 15 // 15분마다 만료된 세션 정리
+});
+
+// 세션 설정
 app.use(session({
-  store: new pgSession({
-    pool: pool,
-    tableName: 'session',
-    createTableIfMissing: true
-  }),
+  store: sessionStore,
   secret: process.env.SESSION_SECRET || 'default-secret-change-in-production',
   resave: false,
   saveUninitialized: false,
+  rolling: true, // 매 요청마다 세션 갱신
   cookie: {
     secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
-    sameSite: 'lax', // 같은 도메인이므로 lax 사용
-    // domain 설정 제거 - 같은 도메인에서는 필요 없음
-    maxAge: 24 * 60 * 60 * 1000 // 24시간
-  }
+    sameSite: 'lax',
+    maxAge: 24 * 60 * 60 * 1000, // 24시간
+    path: '/' // 모든 경로에서 쿠키 사용
+  },
+  name: 'cbsk.sid' // 세션 쿠키 이름 명시
 }));
 
 // 인증 미들웨어
 const requireAuth = (req, res, next) => {
-  console.log('[REQUIRE-AUTH]', {
+  console.log('[REQUIRE-AUTH] Checking authentication:', {
     sessionID: req.sessionID,
+    hasSession: !!req.session,
     isAdmin: req.session?.isAdmin,
-    hasSession: !!req.session
+    username: req.session?.username,
+    loginTime: req.session?.loginTime,
+    cookies: req.headers.cookie,
+    sessionData: req.session
   });
 
-  if (req.session && req.session.isAdmin) {
+  if (req.session && req.session.isAdmin === true) {
+    console.log('[REQUIRE-AUTH] ✓ Authenticated');
     next();
   } else {
-    console.log('[REQUIRE-AUTH] Unauthorized - session missing or not admin');
-    res.status(401).json({ error: 'Unauthorized' });
+    console.log('[REQUIRE-AUTH] ✗ UNAUTHORIZED - Reason:', {
+      noSession: !req.session,
+      notAdmin: !req.session?.isAdmin,
+      isAdminValue: req.session?.isAdmin
+    });
+    res.status(401).json({
+      error: 'Unauthorized',
+      debug: {
+        hasSession: !!req.session,
+        isAdmin: req.session?.isAdmin
+      }
+    });
   }
 };
 
@@ -72,19 +95,32 @@ app.use('/admin', express.static(path.join(__dirname, 'public/admin')));
 // ===== API 엔드포인트 =====
 
 // 로그인
-app.post('/api/login', (req, res) => {
+app.post('/api/login', async (req, res) => {
   const { username, password } = req.body;
 
-  console.log('[LOGIN] Attempt:', { username, sessionID: req.sessionID });
+  console.log('[LOGIN] Attempt:', {
+    username,
+    sessionID: req.sessionID,
+    hasSession: !!req.session,
+    cookies: req.headers.cookie
+  });
 
   if (username === process.env.ADMIN_USERNAME && password === process.env.ADMIN_PASSWORD) {
     req.session.isAdmin = true;
+    req.session.username = username;
+    req.session.loginTime = new Date().toISOString();
+
+    // 세션 강제 저장
     req.session.save((err) => {
       if (err) {
         console.error('[LOGIN] Session save error:', err);
-        return res.status(500).json({ error: 'Session save failed' });
+        return res.status(500).json({ error: 'Session save failed: ' + err.message });
       }
-      console.log('[LOGIN] Success! Session saved:', { sessionID: req.sessionID, isAdmin: req.session.isAdmin });
+      console.log('[LOGIN] SUCCESS!', {
+        sessionID: req.sessionID,
+        isAdmin: req.session.isAdmin,
+        username: req.session.username
+      });
       res.json({ success: true, message: 'Login successful' });
     });
   } else {
